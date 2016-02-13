@@ -5,6 +5,6 @@
     <title>PlatziPHP y Laravel</title>
   </head>
   <body>
-    @yield('content');
+    @yield('content')
   </body>
 </html>

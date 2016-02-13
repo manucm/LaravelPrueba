@@ -13,6 +13,11 @@
 
 Route::get('/', 'HomeController@index');
 
+Route::get('post/{id}', [
+  'uses' => 'PostsController@show',
+  'as' => 'post_show_path'
+]);
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
