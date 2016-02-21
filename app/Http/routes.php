@@ -11,24 +11,44 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::group(['middleware'=>'auth'], function() {
 
-Route::get('post/{id}', [
-  'uses' => 'PostsController@show',
-  'as' => 'post_show_path'
+    Route::get('/', 'HomeController@index');
+
+    Route::get('post/{id}', [
+      'uses' => 'PostsController@show',
+      'as'   => 'post_show_path',
+    ]);
+
+});
+
+
+Route::group(['prefix' => 'api'], function() {
+
+    Route::get('/', function() {
+        return 'Hola, soy tu api';
+    });
+  });
+
+
+  Route::post('auth/login', [
+    'uses' => 'AuthController@store',
+    'as'   => 'auth_store_path',
+  ]);
+
+
+Route::get('auth/login', [
+  'uses' => 'AuthController@index',
+  'as'   => 'auth_show_path',
 ]);
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| This route group applies the "web" middleware group to every route
-| it contains. The "web" middleware group is defined in your HTTP
-| kernel and includes session state, CSRF protection, and more.
-|
-*/
 
+
+Route::get('auth/logout', [
+  'uses' => 'AuthController@destroy',
+  'as'   => 'auth_destroy_path',
+]);
+/*
 Route::group(['middleware' => ['web']], function () {
     //
-});
+});*/

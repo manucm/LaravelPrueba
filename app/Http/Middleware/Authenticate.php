@@ -21,7 +21,8 @@ class Authenticate
             if ($request->ajax() || $request->wantsJson()) {
                 return response('Unauthorized.', 401);
             } else {
-                return redirect()->guest('login');
+                //return redirect()->guest('auth'); valen los dos
+                return redirect()->route('auth_show_path');
             }
         }
 
