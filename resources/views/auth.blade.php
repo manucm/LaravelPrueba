@@ -4,26 +4,10 @@
 
 <h1>Iniciar Sesión</h1>
 
-@if($errors->has())
-
-    <div class="alert alert-danger">
-
-      <ul class="list-unstyled">
-
-
-      @foreach($errors->all() as $error)
-
-          <li>{{ $error }}</li>
-
-        @endforeach
-
-        </ul>
-    </div>
-
-@endif
+@include('partials.errors')
 
 <!-- <form class="" action="{{ url('auth/login') }}" method="post">-->
-<form class="" action="" method="post">
+<form class="" action="{{ route('auth_store_path') }}" method="post">
 
     <!-- Esto nos permite que otros usuarios no puedan
         lanzar formularios que no estén alojados en nuestro servidor

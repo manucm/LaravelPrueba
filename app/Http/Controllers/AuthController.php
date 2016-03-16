@@ -13,6 +13,11 @@ class AuthController extends Controller
           return view('auth');
     }
 
+    public function create() {
+      echo "create";
+        return view('posts.create');
+    }
+
     public function store(Request $request) {
 
         /* Pruebas
